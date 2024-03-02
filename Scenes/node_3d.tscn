@@ -67,6 +67,8 @@ size = Vector3(50, 0.016, 50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997245, 0)
 script = ExtResource("1_vfsas")
 
+[node name="RayCast3D" type="RayCast3D" parent="Player"]
+
 [node name="Player Collider" type="CollisionShape3D" parent="Player"]
 shape = SubResource("BoxShape3D_tjwy5")
 
