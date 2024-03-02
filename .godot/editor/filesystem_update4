@@ -1,3 +1,4 @@
-res://Scenes/node_3d.tscn
 res://Scenes/Player.gd
 res://placeholder shit/unlit.tres
+res://Scenes/island.tscn
+res://model/land.res
