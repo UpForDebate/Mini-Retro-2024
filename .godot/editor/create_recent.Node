@@ -1,3 +1,6 @@
+JoltConeTwistJoint3D
+Path3D
+JoltPinJoint3D
 RigidBody3D
 Generic6DOFJoint3D
 ConeTwistJoint3D
@@ -6,7 +9,6 @@ CollisionShape3D
 PinJoint3D
 StaticBody3D
 SpringArm3D
-Path3D
 Line2D
 DirectionalLight3D
 Camera3D

@@ -17,6 +17,8 @@ func _ready():
 func _process(delta):
 	#it do be fishin time
 	
+	if(delta>0.017):
+		print(delta)
 	
 	pass
 	
@@ -51,4 +53,4 @@ func _input(event):
 		rotation.y -= mouseMovement.x
 		mouseMovement.y = clamp(mainCamera.global_rotation.x + mouseMovement.y, deg_to_rad(-50), deg_to_rad(80)) - mainCamera.global_rotation.x;
 		mainCamera.rotate_x(mouseMovement.y)
-	
+

@@ -1,6 +1,26 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1709293391
-icon.svg::CompressedTexture2D::1982098589323447402::1709120927::1709120941::1::::<><>::
-::res://Scenes/::1709293052
-node_3d.tscn::PackedScene::5858148125900080545::1709293052::0::1::::<><>::res://Scenes/Player.gd
-Player.gd::GDScript::-1::1709293052::0::1::::<>CharacterBody3D<>::
+::res://::1709336316
+icon.svg::CompressedTexture2D::1982098589323447402::1709332905::1709332905::1::::<><>::
+::res://addons/::1709334520
+::res://addons/godot-jolt/::1709334498
+godot-jolt.gdextension::GDExtension::-1::1709334498::0::1::::<><>::
+LICENSE.txt::TextFile::-1::1709334498::0::1::::<><>::
+THIRDPARTY.txt::TextFile::-1::1709334498::0::1::::<><>::
+::res://addons/godot-jolt/android/::1709334498
+::res://addons/godot-jolt/ios/::1709334498
+::res://addons/godot-jolt/ios/godot-jolt_ios.framework/::1709334498
+::res://addons/godot-jolt/ios/godot-jolt_ios_editor.framework/::1709334498
+::res://addons/godot-jolt/linux/::1709334498
+::res://addons/godot-jolt/macos/::1709334498
+::res://addons/godot-jolt/macos/godot-jolt_macos.framework/::1709334498
+::res://addons/godot-jolt/macos/godot-jolt_macos.framework/Resources/::1709334498
+::res://addons/godot-jolt/macos/godot-jolt_macos.framework/_CodeSignature/::1709334498
+::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/::1709334498
+::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/Resources/::1709334498
+::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/_CodeSignature/::1709334498
+::res://addons/godot-jolt/windows/::1709336307
+::res://placeholder shit/::1709335029
+unlit.tres::StandardMaterial3D::1793325699696795726::1709335029::0::1::::<><>::
+::res://Scenes/::1709336289
+node_3d.tscn::PackedScene::5858148125900080545::1709336289::0::1::::<><>::res://Scenes/Player.gd<>uid://0sx2u8kc7n47::::res://placeholder shit/unlit.tres
+Player.gd::GDScript::-1::1709334561::0::1::::<>CharacterBody3D<>::
