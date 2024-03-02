@@ -2,3 +2,6 @@ res://Scenes/Player.gd
 res://placeholder shit/unlit.tres
 res://Scenes/island.tscn
 res://model/land.res
+res://model/materials/Screen.tres
+res://model/materials/Computer.tres
+res://model/materials/Bord.tres

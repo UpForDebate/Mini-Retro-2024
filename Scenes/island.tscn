@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnrolk2mq0nqx"]
+[gd_scene load_steps=8 format=3 uid="uid://dnrolk2mq0nqx"]
 
 [ext_resource type="Texture2D" uid="uid://b534k6pkvdirq" path="res://textures/Water 1.jpg" id="2_pke0p"]
 [ext_resource type="Texture2D" uid="uid://c2uyghvaht51y" path="res://textures/brick_wall.png" id="3_2vyck"]
 [ext_resource type="ArrayMesh" uid="uid://bnq2r3y1bkpbt" path="res://model/land.res" id="3_g5t8n"]
+[ext_resource type="PackedScene" uid="uid://dhxknspap8nly" path="res://model/computer.gltf" id="4_sy7j6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqoxf"]
 shading_mode = 0
@@ -49,3 +50,6 @@ operation = 2
 radius = 2.23971
 height = 17.417
 material = SubResource("StandardMaterial3D_glnc6")
+
+[node name="computer" parent="." instance=ExtResource("4_sy7j6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.30991, 3.33874, -28.6389)
