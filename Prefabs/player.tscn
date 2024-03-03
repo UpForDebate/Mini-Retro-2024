@@ -15,6 +15,8 @@ size = Vector3(0.377882, 1, 0.385172)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997245, 0)
+collision_layer = 17
+collision_mask = 17
 script = ExtResource("1_pog1t")
 
 [node name="Player Collider" type="CollisionShape3D" parent="."]

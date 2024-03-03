@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dkwo0032vieg"]
+
+[ext_resource type="Texture2D" uid="uid://i34b6flv7oi4" path="res://model/Bobber_TX_Bobber.png" id="1_0k8i7"]
+
+[resource]
+resource_name = "Bobber"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_0k8i7")
+roughness = 0.0
+texture_filter = 2

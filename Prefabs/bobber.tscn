@@ -1,11 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5hpfdpin5ih4"]
+[gd_scene load_steps=3 format=3 uid="uid://b5hpfdpin5ih4"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_5n5qi"]
-size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3gq2"]
-shading_mode = 0
-albedo_color = Color(1, 0, 0, 1)
+[ext_resource type="ArrayMesh" uid="uid://xqav88loq660" path="res://model/boober.res" id="1_omkyk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lede8"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -17,9 +12,8 @@ collision_mask = 2
 mass = 3.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_5n5qi")
+mesh = ExtResource("1_omkyk")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_k3gq2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_lede8")
