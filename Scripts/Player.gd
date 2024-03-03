@@ -91,10 +91,16 @@ func shoot():
 	if(gameState == state.rodInHand):
 		danglingRope.visible = false
 		throwBobber.visible = true
-		throwBobber.position = position + Vector3.UP *0.7 + Vector3.BACK + Vector3.RIGHT
-		throwBobber.linear_velocity = -global_basis.z * 10 + global_basis.y*2;
+		throwBobber.global_position = global_position + Vector3.UP *0.7 + global_basis.z + global_basis.x
+		throwBobber.linear_velocity = -global_basis.z * 10 + global_basis.y*2
 		gameState = state.fishing
 		$"Fish Fetcher/Fetcher/AnimationPlayer".play("Throw")
+		
 		return
 	gameState = state.pulling
+<<<<<<< Updated upstream
 	$"Fish Fetcher/Fetcher/AnimationPlayer".play_backwards("Throw")
+=======
+	$"Fish Fetcher/Fetcher/AnimationPlayer".play("Throw", -1, 1.0, true)
+
+>>>>>>> Stashed changes
