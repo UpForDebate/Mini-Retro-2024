@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ocy2ljjutwvp"]
+
+[ext_resource type="Texture2D" uid="uid://cun7hploslol8" path="res://model/Shark_TX_Shark.png" id="1_c0xdx"]
+
+[resource]
+resource_name = "MT_Shark"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_c0xdx")
+texture_filter = 2

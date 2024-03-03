@@ -94,5 +94,7 @@ func shoot():
 		throwBobber.position = position + Vector3.UP *0.7 + Vector3.BACK + Vector3.RIGHT
 		throwBobber.linear_velocity = -global_basis.z * 10 + global_basis.y*2;
 		gameState = state.fishing
+		$"Fish Fetcher/Fetcher/AnimationPlayer".play("Throw")
 		return
 	gameState = state.pulling
+	$"Fish Fetcher/Fetcher/AnimationPlayer".play("Throw", -1, 1.0, true)
