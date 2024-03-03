@@ -13,6 +13,7 @@ config_version=5
 config/name="Fischer's Fish"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/image="res://icon.png"
 config/icon="res://icon.svg"
 
 [dotnet]

@@ -116,10 +116,13 @@ height = 17.417
 material = SubResource("StandardMaterial3D_glnc6")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 85.0
-offset_top = 67.0
-offset_right = 1077.0
-offset_bottom = 313.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -133.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Fischer's Fishing Fishers Fishing Phishing Fish"
 label_settings = SubResource("LabelSettings_sywni")
 horizontal_alignment = 1
@@ -127,10 +130,13 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 85.0
-offset_top = 313.0
-offset_right = 1077.0
-offset_bottom = 559.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 136.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Press F to play"
 label_settings = SubResource("LabelSettings_3tj3r")
 horizontal_alignment = 1
