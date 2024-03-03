@@ -83,7 +83,7 @@ func _physics_process(delta):
 				fish.queue_free()
 				throwBobber.set_meta("hasFish", false)
 		throwBobber.linear_velocity =  (global_position + Vector3.UP*0.5 - throwBobber.global_position).normalized()*10
-		throwBobber.position += global_position + Vector3.UP*0.5 - throwBobber.global_position
+		throwBobber.position += (global_position + Vector3.UP*0.5 - throwBobber.global_position)*delta
 		
 	
 	

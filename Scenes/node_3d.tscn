@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cppy3xmwb4b0t"]
+[gd_scene load_steps=39 format=3 uid="uid://cppy3xmwb4b0t"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_hlf0d"]
 [ext_resource type="FontFile" uid="uid://c0h1jjdov4442" path="res://font/8-bit-hud.ttf" id="2_2q1wn"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Rope.gd" id="7_s4sod"]
 [ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="8_4ni6u"]
 [ext_resource type="PackedScene" uid="uid://dnrolk2mq0nqx" path="res://Scenes/island.tscn" id="8_48f8d"]
-[ext_resource type="PackedScene" uid="uid://xs0whjty3jp4" path="res://Scenes/computer.tscn" id="9_x6gkh"]
+[ext_resource type="PackedScene" path="res://Scenes/computer.tscn" id="9_x6gkh"]
 [ext_resource type="PackedScene" uid="uid://u77u4lnmer46" path="res://Scenes/fisher.tscn" id="11_10g2e"]
 [ext_resource type="Script" path="res://Scenes/Area3D.gd" id="11_nv850"]
 [ext_resource type="Script" path="res://Scripts/FisherArray.gd" id="13_eu0eo"]
@@ -31,7 +31,7 @@ font_size = 32
 [sub_resource type="BoxShape3D" id="BoxShape3D_lede8"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_e6g3p"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_7tlxv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81lpw"]
 
@@ -44,6 +44,14 @@ material = SubResource("StandardMaterial3D_8558y")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fif6w"]
 size = Vector3(18.6653, 1, 18.6667)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ucsr"]
+render_priority = 3
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.498039)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e0e48"]
+material = SubResource("StandardMaterial3D_3ucsr")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kf6xr"]
 resource_name = "Dog_Watermelon.001"
@@ -251,7 +259,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_lede8")
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="Bobber"]
-mesh = SubResource("ImmediateMesh_e6g3p")
+mesh = SubResource("ImmediateMesh_7tlxv")
 script = ExtResource("8_4ni6u")
 start_thickness = 0.01
 end_thickness = 0.01
@@ -274,14 +282,41 @@ mesh = SubResource("BoxMesh_phsec")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.6829, 0)
 
 [node name="Area3D" type="Area3D" parent="Island"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.719, 1, 3.306)
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("11_nv850")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Island/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77914, 0, 4.55969)
 shape = SubResource("BoxShape3D_fif6w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Island"]
+transform = Transform3D(9.6769, 0, 0, 0, 1, 0, 0, 0, 9.65054, 2.05246, 3.50194, 4.21611)
+mesh = SubResource("PlaneMesh_e0e48")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Island"]
+transform = Transform3D(9.6769, 0, 0, 0, 1, 0, 0, 0, 9.65054, 2.052, 3, 4.216)
+mesh = SubResource("PlaneMesh_e0e48")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Island"]
+transform = Transform3D(9.6769, 0, 0, 0, 1, 0, 0, 0, 9.65054, 2.052, 2.5, 4.216)
+mesh = SubResource("PlaneMesh_e0e48")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Island"]
+transform = Transform3D(9.6769, 0, 0, 0, 1, 0, 0, 0, 9.65054, 2.052, 2, 4.216)
+mesh = SubResource("PlaneMesh_e0e48")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Island"]
+transform = Transform3D(9.6769, 0, 0, 0, 1, 0, 0, 0, 9.65054, 2.052, 1.5, 4.216)
+mesh = SubResource("PlaneMesh_e0e48")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Island"]
+transform = Transform3D(9.6769, 0, 0, 0, 1, 0, 0, 0, 9.65054, 2.052, 1, 4.216)
+mesh = SubResource("PlaneMesh_e0e48")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Island"]
+transform = Transform3D(9.6769, 0, 0, 0, 1, 0, 0, 0, 9.65054, 2.052, 0.5, 4.216)
+mesh = SubResource("PlaneMesh_e0e48")
 
 [node name="computer" parent="." instance=ExtResource("9_x6gkh")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.58841, -1.26999, -8.40923)
