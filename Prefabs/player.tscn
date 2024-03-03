@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctpv6s2w2p7nr"]
+[gd_scene load_steps=6 format=3 uid="uid://ctpv6s2w2p7nr"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_pog1t"]
+[ext_resource type="PackedScene" uid="uid://ddeelih4ir8u4" path="res://Scenes/pixelated_camera.tscn" id="2_whb3x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tjwy5"]
 size = Vector3(0.377882, 1, 0.385172)
@@ -22,6 +23,9 @@ shape = SubResource("BoxShape3D_tjwy5")
 [node name="Player Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_rs0br")
 
+[node name="Pixelated Camera" parent="." instance=ExtResource("2_whb3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286415, 0)
+
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258833, 0)
 
@@ -29,18 +33,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258833, 0)
 target_position = Vector3(0, 0, -30)
 collision_mask = 4
 hit_from_inside = true
-
-[node name="Pixelated Camera" type="SubViewportContainer" parent="."]
-texture_filter = 3
-offset_right = 1152.0
-offset_bottom = 648.0
-stretch = true
-stretch_shrink = 5
-
-[node name="SubViewport" type="SubViewport" parent="Pixelated Camera"]
-handle_input_locally = false
-size = Vector2i(230, 129)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="Pixelated Camera/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28366, 0)

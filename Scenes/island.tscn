@@ -1,9 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnrolk2mq0nqx"]
+[gd_scene load_steps=12 format=3 uid="uid://dnrolk2mq0nqx"]
 
 [ext_resource type="Texture2D" uid="uid://b534k6pkvdirq" path="res://textures/Water 1.jpg" id="2_pke0p"]
 [ext_resource type="Texture2D" uid="uid://c2uyghvaht51y" path="res://textures/brick_wall.png" id="3_2vyck"]
 [ext_resource type="Texture2D" uid="uid://clo7rde8t1550" path="res://textures/Grass Texture 1.jpg" id="3_26jm8"]
 [ext_resource type="ArrayMesh" uid="uid://bnq2r3y1bkpbt" path="res://model/land.res" id="3_g5t8n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_87b78"]
+sky_top_color = Color(0.00392157, 0.227451, 0.541176, 1)
+sky_horizon_color = Color(0.623529, 0.659804, 0.715686, 1)
+ground_bottom_color = Color(0.490196, 0.411765, 0.321569, 1)
+ground_horizon_color = Color(0.623529, 0.659804, 0.715686, 1)
+
+[sub_resource type="Sky" id="Sky_fs5dc"]
+sky_material = SubResource("ProceduralSkyMaterial_87b78")
+
+[sub_resource type="Environment" id="Environment_v4wtj"]
+background_mode = 2
+sky = SubResource("Sky_fs5dc")
+tonemap_mode = 2
+fog_enabled = true
+fog_density = 0.015
+volumetric_fog_density = 0.0875
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqoxf"]
 shading_mode = 0
@@ -18,6 +35,8 @@ uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdgg0"]
 shading_mode = 2
+diffuse_mode = 1
+specular_mode = 2
 albedo_color = Color(0.937255, 0.509804, 0.384314, 1)
 albedo_texture = ExtResource("3_2vyck")
 uv1_triplanar = true
@@ -33,6 +52,16 @@ uv1_triplanar_sharpness = 150.0
 texture_filter = 2
 
 [node name="Island" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57032, -0.24824, 2.01247)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.920505, 0.0651617, -0.385259, 0, 0.985996, 0.166769, 0.390731, 0.153511, -0.907614, 0.302282, -0.944012, 0.0485797)
+light_color = Color(1, 1, 0.74902, 1)
+shadow_enabled = true
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v4wtj")
 
 [node name="Ocean" type="CSGBox3D" parent="."]
 use_collision = true

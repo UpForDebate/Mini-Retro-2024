@@ -1,13 +1,36 @@
-[gd_scene format=3 uid="uid://ddeelih4ir8u4"]
+[gd_scene load_steps=6 format=3 uid="uid://ddeelih4ir8u4"]
 
-[node name="Pixelated Camera" type="SubViewportContainer"]
-texture_filter = 3
+[ext_resource type="Shader" path="res://shaders/crt.gdshader" id="1_0nqu4"]
+[ext_resource type="Shader" path="res://shaders/pixel.gdshader" id="1_13vgx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bipg"]
+shader = ExtResource("1_0nqu4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmdh8"]
+render_priority = 0
+shader = ExtResource("1_13vgx")
+shader_parameter/pixel_size = 3
+
+[sub_resource type="QuadMesh" id="QuadMesh_qfdsn"]
+size = Vector2(2, 2)
+
+[node name="Pixelated Camera" type="Camera3D"]
+
+[node name="Post" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CRT" type="ColorRect" parent="Post"]
+material = SubResource("ShaderMaterial_5bipg")
+layout_mode = 2
 offset_right = 1152.0
 offset_bottom = 648.0
-stretch = true
-stretch_shrink = 5
+mouse_filter = 2
 
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(230, 129)
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0645526)
+material_override = SubResource("ShaderMaterial_qmdh8")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_qfdsn")

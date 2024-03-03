@@ -15,7 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	mainCamera = $"Pixelated Camera/SubViewport/Camera3D"
+	mainCamera = $"Pixelated Camera"
 	interactionRay = $Node3D/RayCast3D
 	interactionUI = $"../UI/INTERACT"
 	cameraDirection = $Node3D
