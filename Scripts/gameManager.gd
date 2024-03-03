@@ -15,7 +15,7 @@ var moneyLabel : Label
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	moneyLabel = $UI/money
-	fisherCount = 1
+	fisherCount = 0
 	pass # Replace with function body.
 
 
@@ -29,9 +29,7 @@ func _process(delta):
 	pass
 
 
-func addFisher():
-	fisherCount+=1
-	pass
+
 	
 func incrementMoney(delta : float):
 	money += delta * fisherMoneyPerSec * fisherCount

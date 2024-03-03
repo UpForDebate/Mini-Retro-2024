@@ -14,6 +14,6 @@ func _process(delta):
 
 
 func _interact():
-	$"..".addFisher()
+	$"../FisherArray".addFisher()
 	
 	pass
