@@ -77,13 +77,13 @@ material = SubResource("StandardMaterial3D_le41r")
 
 [node name="HoleBorder" type="CSGCylinder3D" parent="Ocean/Land"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95452, -2.73351, 4.54946)
-radius = 2.78276
+radius = 9.616
 height = 16.191
 material = SubResource("StandardMaterial3D_qdgg0")
 
 [node name="ActualHole" type="CSGCylinder3D" parent="Ocean/Land"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95452, -2.73351, 4.54946)
 operation = 2
-radius = 2.23971
+radius = 9.145
 height = 17.417
 material = SubResource("StandardMaterial3D_glnc6")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cppy3xmwb4b0t"]
+[gd_scene load_steps=22 format=3 uid="uid://cppy3xmwb4b0t"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_hlf0d"]
 [ext_resource type="FontFile" uid="uid://c0h1jjdov4442" path="res://font/8-bit-hud.ttf" id="2_2q1wn"]
@@ -9,7 +9,8 @@
 [ext_resource type="Script" path="res://Scripts/Rope.gd" id="7_s4sod"]
 [ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="8_4ni6u"]
 [ext_resource type="PackedScene" uid="uid://dnrolk2mq0nqx" path="res://Scenes/island.tscn" id="8_48f8d"]
-[ext_resource type="PackedScene" uid="uid://xs0whjty3jp4" path="res://Scenes/computer.tscn" id="9_x6gkh"]
+[ext_resource type="PackedScene" uid="uid://b7q66xc4uk0rt" path="res://model/Fisher.gltf" id="9_ctshq"]
+[ext_resource type="PackedScene" path="res://Scenes/computer.tscn" id="9_x6gkh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kp4rg"]
 font = ExtResource("2_2q1wn")
@@ -18,6 +19,8 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_7yrlo"]
 font = ExtResource("2_2q1wn")
 font_size = 32
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yv55q"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5n5qi"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -29,7 +32,7 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lede8"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_i4nqa"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_y6cdp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81lpw"]
 
@@ -84,19 +87,23 @@ label_settings = SubResource("LabelSettings_7yrlo")
 horizontal_alignment = 2
 
 [node name="DanglingRope" parent="." instance=ExtResource("2_ymrie")]
+transform = Transform3D(1, 0, 0, 0, 0.858817, 0.512283, 0, -0.512283, 0.858817, 0.350978, 1.40482, -10.4975)
 visible = true
 
 [node name="Player" parent="." instance=ExtResource("3_uscaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.677208, -9.51448)
 
 [node name="Fish Fetcher" parent="Player" instance=ExtResource("4_p4ssq")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 
 [node name="Bobber" type="RigidBody3D" parent="." node_paths=PackedStringArray("line")]
-transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.655477, -2.36147)
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.33544, -11.8759)
+visible = false
 collision_layer = 8
 collision_mask = 8
 mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_yv55q")
 script = ExtResource("7_s4sod")
 line = NodePath("LineRenderer3D")
 points = [NodePath("."), NodePath("../Player/Fish Fetcher/Fetcher Tip")]
@@ -110,13 +117,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k3gq2")
 shape = SubResource("BoxShape3D_lede8")
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="Bobber"]
-mesh = SubResource("ImmediateMesh_i4nqa")
+mesh = SubResource("ImmediateMesh_y6cdp")
 script = ExtResource("8_4ni6u")
 start_thickness = 0.01
 end_thickness = 0.01
 
 [node name="Interactable" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49209, 0.128964, -3.65996)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49209, -0.191073, -13.1744)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("6_bv6qa")
@@ -132,3 +139,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.6829, 0)
 
 [node name="computer" parent="." instance=ExtResource("9_x6gkh")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.58841, -1.26999, -8.40923)
+
+[node name="Fisher2" parent="." instance=ExtResource("9_ctshq")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.62235, -0.323275, -2.02794)
+
+[node name="Fisher3" parent="." instance=ExtResource("9_ctshq")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7.3478, -0.323275, 4.62857)
+
+[node name="Fisher4" parent="." instance=ExtResource("9_ctshq")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -6.00923, -0.323275, 1.01033)
+
+[node name="Fisher5" parent="." instance=ExtResource("9_ctshq")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -6.61187, -0.375703, 2.62286)
+
+[node name="Fisher6" parent="." instance=ExtResource("9_ctshq")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -5.38957, -0.375703, -0.382678)

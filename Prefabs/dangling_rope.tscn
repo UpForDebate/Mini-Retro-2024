@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="2_jmfou"]
 [ext_resource type="PackedScene" uid="uid://b5hpfdpin5ih4" path="res://Prefabs/bobber.tscn" id="3_hsqa7"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_bl4ju"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_qwsb0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_px6p8"]
 size = Vector3(0.05, 0.05, 0.4)
@@ -21,7 +21,7 @@ points = [NodePath("../Player/Fish Fetcher/Fetcher Tip"), NodePath("RigidBody3D/
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
-mesh = SubResource("ImmediateMesh_bl4ju")
+mesh = SubResource("ImmediateMesh_qwsb0")
 script = ExtResource("2_jmfou")
 start_thickness = 0.01
 end_thickness = 0.01
