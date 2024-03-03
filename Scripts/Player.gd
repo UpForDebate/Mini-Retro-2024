@@ -75,7 +75,15 @@ func _physics_process(delta):
 			danglingRope.visible = true
 			throwBobber.visible = false
 			gameState = state.rodInHand
+			if(throwBobber.get_meta("hasFish")):
+				$"..".money+=1
+				#var fish =throwBobber.find_child("BlowFish")
+				var fish = throwBobber.get_child(3)
+				throwBobber.remove_child(fish)
+				fish.queue_free()
+				throwBobber.set_meta("hasFish", false)
 		throwBobber.linear_velocity =  (global_position + Vector3.UP*0.5 - throwBobber.global_position).normalized()*10
+		throwBobber.position += global_position + Vector3.UP*0.5 - throwBobber.global_position
 		
 	
 	
@@ -99,4 +107,6 @@ func shoot():
 		$"Fish Fetcher/Fetcher/AnimationPlayer".play("Fetcher_Throw")
 		return
 	gameState = state.pulling
+
+
 	$"Fish Fetcher/Fetcher/AnimationPlayer".play("Fetcher_Catch")

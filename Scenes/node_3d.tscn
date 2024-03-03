@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cppy3xmwb4b0t"]
+[gd_scene load_steps=24 format=3 uid="uid://cppy3xmwb4b0t"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_hlf0d"]
 [ext_resource type="FontFile" uid="uid://c0h1jjdov4442" path="res://font/8-bit-hud.ttf" id="2_2q1wn"]
@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://ctpv6s2w2p7nr" path="res://Prefabs/player.tscn" id="3_uscaq"]
 [ext_resource type="PackedScene" uid="uid://drws5behui0ue" path="res://Prefabs/fish_fetcher.tscn" id="4_p4ssq"]
 [ext_resource type="Script" path="res://Scripts/InteractableBuy.gd" id="6_bv6qa"]
-[ext_resource type="ArrayMesh" uid="uid://xqav88loq660" path="res://model/boober.res" id="7_q8xr1"]
+[ext_resource type="ArrayMesh" uid="uid://gcsiyrn8w5wn" path="res://model/boober.res" id="7_q8xr1"]
 [ext_resource type="Script" path="res://Scripts/Rope.gd" id="7_s4sod"]
 [ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="8_4ni6u"]
 [ext_resource type="PackedScene" uid="uid://dnrolk2mq0nqx" path="res://Scenes/island.tscn" id="8_48f8d"]
-[ext_resource type="PackedScene" uid="uid://xs0whjty3jp4" path="res://Scenes/computer.tscn" id="9_x6gkh"]
-[ext_resource type="PackedScene" uid="uid://fm6r7lb67ak5" path="res://Scenes/fisher.tscn" id="11_10g2e"]
+[ext_resource type="PackedScene" path="res://Scenes/computer.tscn" id="9_x6gkh"]
+[ext_resource type="PackedScene" uid="uid://u77u4lnmer46" path="res://Scenes/fisher.tscn" id="11_10g2e"]
+[ext_resource type="Script" path="res://Scenes/Area3D.gd" id="11_nv850"]
+[ext_resource type="Script" path="res://Scripts/FisherArray.gd" id="13_eu0eo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kp4rg"]
 font = ExtResource("2_2q1wn")
@@ -26,7 +28,7 @@ font_size = 32
 [sub_resource type="BoxShape3D" id="BoxShape3D_lede8"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_6ohfq"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_qvnx0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81lpw"]
 
@@ -36,6 +38,9 @@ albedo_color = Color(0.141176, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_phsec"]
 material = SubResource("StandardMaterial3D_8558y")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fif6w"]
+size = Vector3(18.6653, 1, 18.6667)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_hlf0d")
@@ -111,7 +116,7 @@ skeleton = NodePath("")
 shape = SubResource("BoxShape3D_lede8")
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="Bobber"]
-mesh = SubResource("ImmediateMesh_6ohfq")
+mesh = SubResource("ImmediateMesh_qvnx0")
 script = ExtResource("8_4ni6u")
 start_thickness = 0.01
 end_thickness = 0.01
@@ -131,8 +136,24 @@ mesh = SubResource("BoxMesh_phsec")
 [node name="Island" parent="." instance=ExtResource("8_48f8d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.6829, 0)
 
+[node name="Area3D" type="Area3D" parent="Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30444, 0)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("11_nv850")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Island/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77914, 0, 4.55969)
+shape = SubResource("BoxShape3D_fif6w")
+
 [node name="computer" parent="." instance=ExtResource("9_x6gkh")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.58841, -1.26999, -8.40923)
 
+[node name="FisherArray" type="Node3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.99481, -0.32091, 4.57291)
+script = ExtResource("13_eu0eo")
+
 [node name="Fisher2" parent="." instance=ExtResource("11_10g2e")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3.94718, -0.32091, -2.43638)
+
+[editable path="Island"]

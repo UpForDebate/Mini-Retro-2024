@@ -3,10 +3,11 @@ extends Node3D
 var fishPlacementArray : Array
 
 
+
 func _ready():
 	for i in range (25):
 		var fisherPlacementAngle = 45/4*i
-		var placementDist = 9.3 * sin(deg_to_rad(67.5))/sin(deg_to_rad( 112.5-fisherPlacementAngle%45))
+		var placementDist = 9.4 * sin(deg_to_rad(67.5))/sin(deg_to_rad( 112.5-fisherPlacementAngle%45)) /0.4
 		var newNode = Node3D.new()
 		add_child(newNode)
 		newNode.global_position = global_position + global_basis.x*cos(deg_to_rad( fisherPlacementAngle))*placementDist + global_basis.z*sin(deg_to_rad( fisherPlacementAngle))*placementDist
@@ -36,7 +37,7 @@ func addFisher():
 
 
 func placeFisher(nodeParent : Node3D, layer: int):
-	var newNode = preload("res://Scenes/Fisher.gltf").instantiate()
-	newNode.position.y +=0.3*layer
+	var newNode = preload("res://Scenes/fisher.tscn").instantiate()
+	newNode.position.y +=1.1*layer
 	nodeParent.add_child(newNode)
 	nodeParent.set_meta ("fisherCount", nodeParent.get_meta("fisherCount")+1)

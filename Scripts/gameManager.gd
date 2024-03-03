@@ -7,7 +7,7 @@ var timeSinceUpdate = 0.0
 var holeFill : int #secret
 var fisherCount : int
 var fisherMoneyPerSec = 1
-var priceForNext = 2
+var priceForNext = 2.0
 var moneyLabel : Label
 
 

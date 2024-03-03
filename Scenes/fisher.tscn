@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://fm6r7lb67ak5"]
+[gd_scene load_steps=12 format=3 uid="uid://u77u4lnmer46"]
 
 [ext_resource type="Material" uid="uid://dka44skx8sv78" path="res://model/MT_Fisher.tres" id="1_alheo"]
 [ext_resource type="Script" path="res://Scripts/fisher.gd" id="1_ma6ta"]
@@ -637,7 +637,6 @@ _data = {
 }
 
 [node name="Fisher" type="Node3D"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("1_ma6ta")
 
 [node name="Fisher_Rig" type="Node3D" parent="."]
