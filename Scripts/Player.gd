@@ -32,6 +32,8 @@ func _ready():
 	
 	
 func _process(delta):
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().quit()
 	
 	mainCamera.global_transform = cameraDirection.global_transform
 	interactionUI.visible = interactionRay.is_colliding()
@@ -94,7 +96,7 @@ func shoot():
 		throwBobber.position = position + Vector3.UP *0.7 + Vector3.BACK + Vector3.RIGHT
 		throwBobber.linear_velocity = -global_basis.z * 10 + global_basis.y*2;
 		gameState = state.fishing
-		$"Fish Fetcher/Fetcher/AnimationPlayer".play("Throw")
+		$"Fish Fetcher/Fetcher/AnimationPlayer".play("Fetcher_Throw")
 		return
 	gameState = state.pulling
-	$"Fish Fetcher/Fetcher/AnimationPlayer".play_backwards("Throw")
+	$"Fish Fetcher/Fetcher/AnimationPlayer".play("Fetcher_Catch")

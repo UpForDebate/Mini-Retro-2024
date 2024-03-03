@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://naxxh6qg4dq4"]
+[gd_scene load_steps=21 format=3 uid="uid://naxxh6qg4dq4"]
 
 [ext_resource type="Texture2D" uid="uid://b534k6pkvdirq" path="res://textures/Water 1.jpg" id="1_oq060"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_p27vl"]
 [ext_resource type="Script" path="res://Scripts/PathFollow3D.gd" id="2_me34i"]
 [ext_resource type="PackedScene" uid="uid://ddeelih4ir8u4" path="res://Scenes/pixelated_camera.tscn" id="2_ttmsa"]
 [ext_resource type="ArrayMesh" uid="uid://bnq2r3y1bkpbt" path="res://model/land.res" id="2_yoq45"]
@@ -75,6 +76,7 @@ _data = {
 point_count = 5
 
 [node name="Main Menu" type="Node3D"]
+script = ExtResource("1_p27vl")
 
 [node name="Island" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57032, -0.24824, 2.01247)

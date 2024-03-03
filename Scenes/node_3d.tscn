@@ -9,8 +9,8 @@
 [ext_resource type="Script" path="res://Scripts/Rope.gd" id="7_s4sod"]
 [ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="8_4ni6u"]
 [ext_resource type="PackedScene" uid="uid://dnrolk2mq0nqx" path="res://Scenes/island.tscn" id="8_48f8d"]
-[ext_resource type="PackedScene" uid="uid://b7q66xc4uk0rt" path="res://model/Fisher.gltf" id="9_ctshq"]
 [ext_resource type="PackedScene" uid="uid://xs0whjty3jp4" path="res://Scenes/computer.tscn" id="9_x6gkh"]
+[ext_resource type="PackedScene" uid="uid://fm6r7lb67ak5" path="res://Scenes/fisher.tscn" id="11_10g2e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kp4rg"]
 font = ExtResource("2_2q1wn")
@@ -32,7 +32,7 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lede8"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_o7x3y"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_h3xqu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81lpw"]
 
@@ -157,7 +157,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k3gq2")
 shape = SubResource("BoxShape3D_lede8")
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="Bobber"]
-mesh = SubResource("ImmediateMesh_o7x3y")
+mesh = SubResource("ImmediateMesh_h3xqu")
 script = ExtResource("8_4ni6u")
 start_thickness = 0.01
 end_thickness = 0.01
@@ -188,14 +188,17 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 mesh = SubResource("ArrayMesh_gqdfk")
 skeleton = NodePath("")
 
-[node name="Fisher3" parent="." instance=ExtResource("9_ctshq")]
+[node name="Fisher3" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7.3478, -0.323275, 4.62857)
 
-[node name="Fisher4" parent="." instance=ExtResource("9_ctshq")]
+[node name="Fisher4" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -6.00923, -0.323275, 1.01033)
 
-[node name="Fisher5" parent="." instance=ExtResource("9_ctshq")]
+[node name="Fisher5" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -6.61187, -0.375703, 2.62286)
 
-[node name="Fisher6" parent="." instance=ExtResource("9_ctshq")]
+[node name="Fisher6" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -5.38957, -0.375703, -0.382678)
+
+[node name="Fisher2" parent="." instance=ExtResource("11_10g2e")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3.94718, -0.32091, -2.43638)
