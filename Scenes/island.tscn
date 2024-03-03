@@ -2,15 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://b534k6pkvdirq" path="res://textures/Water 1.jpg" id="2_pke0p"]
 [ext_resource type="Texture2D" uid="uid://c2uyghvaht51y" path="res://textures/brick_wall.png" id="3_2vyck"]
+[ext_resource type="Texture2D" uid="uid://clo7rde8t1550" path="res://textures/Grass Texture 1.jpg" id="3_26jm8"]
 [ext_resource type="ArrayMesh" uid="uid://bnq2r3y1bkpbt" path="res://model/land.res" id="3_g5t8n"]
-[ext_resource type="PackedScene" uid="uid://dhxknspap8nly" path="res://model/computer.gltf" id="4_sy7j6"]
-[ext_resource type="PackedScene" uid="uid://ddeelih4ir8u4" path="res://Scenes/pixelated_camera.tscn" id="5_m3ge5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqoxf"]
 shading_mode = 0
 albedo_texture = ExtResource("2_pke0p")
 uv1_triplanar = true
 texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_le41r"]
+shading_mode = 0
+albedo_texture = ExtResource("3_26jm8")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdgg0"]
 shading_mode = 2
@@ -32,27 +36,25 @@ texture_filter = 2
 
 [node name="Ocean" type="CSGBox3D" parent="."]
 use_collision = true
+collision_layer = 9
+collision_mask = 9
 size = Vector3(1000, 0.1, 1000)
 material = SubResource("StandardMaterial3D_mqoxf")
 
 [node name="Land" type="CSGMesh3D" parent="Ocean"]
 use_collision = true
 mesh = ExtResource("3_g5t8n")
+material = SubResource("StandardMaterial3D_le41r")
 
 [node name="HoleBorder" type="CSGCylinder3D" parent="Ocean/Land"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95452, -2.73351, 5.06012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95452, -2.73351, 4.54946)
 radius = 2.78276
 height = 16.191
 material = SubResource("StandardMaterial3D_qdgg0")
 
 [node name="ActualHole" type="CSGCylinder3D" parent="Ocean/Land"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95452, -2.73351, 5.06012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95452, -2.73351, 4.54946)
 operation = 2
 radius = 2.23971
 height = 17.417
 material = SubResource("StandardMaterial3D_glnc6")
-
-[node name="computer" parent="." instance=ExtResource("4_sy7j6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.30991, 3.33874, -28.6389)
-
-[node name="Pixelated Camera" parent="." instance=ExtResource("5_m3ge5")]

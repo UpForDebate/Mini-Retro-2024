@@ -1,23 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://cppy3xmwb4b0t"]
+[gd_scene load_steps=17 format=3 uid="uid://cppy3xmwb4b0t"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_hlf0d"]
-[ext_resource type="Material" uid="uid://0sx2u8kc7n47" path="res://placeholder shit/unlit.tres" id="2_2rllf"]
 [ext_resource type="PackedScene" uid="uid://kpe71mfs8ksc" path="res://Prefabs/dangling_rope.tscn" id="2_ymrie"]
 [ext_resource type="PackedScene" uid="uid://ctpv6s2w2p7nr" path="res://Prefabs/player.tscn" id="3_uscaq"]
 [ext_resource type="PackedScene" uid="uid://drws5behui0ue" path="res://Prefabs/fish_fetcher.tscn" id="4_p4ssq"]
 [ext_resource type="Script" path="res://Scripts/InteractableBuy.gd" id="6_bv6qa"]
 [ext_resource type="Script" path="res://Scripts/Rope.gd" id="7_s4sod"]
 [ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="8_4ni6u"]
+[ext_resource type="PackedScene" uid="uid://dnrolk2mq0nqx" path="res://Scenes/island.tscn" id="8_48f8d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7yrlo"]
 font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j0anl"]
-size = Vector3(50, 0.016, 50)
-
-[sub_resource type="BoxMesh" id="BoxMesh_r5kjq"]
-material = ExtResource("2_2rllf")
-size = Vector3(50, 0.016, 50)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5n5qi"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -29,7 +22,7 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lede8"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_fug4v"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_crt3v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81lpw"]
 
@@ -89,16 +82,6 @@ visible = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 
-[node name="Floor" type="StaticBody3D" parent="."]
-collision_layer = 9
-collision_mask = 9
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("BoxShape3D_j0anl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-mesh = SubResource("BoxMesh_r5kjq")
-
 [node name="Bobber" type="RigidBody3D" parent="." node_paths=PackedStringArray("line")]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.655477, -2.36147)
 collision_layer = 8
@@ -117,7 +100,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k3gq2")
 shape = SubResource("BoxShape3D_lede8")
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="Bobber"]
-mesh = SubResource("ImmediateMesh_fug4v")
+mesh = SubResource("ImmediateMesh_crt3v")
 script = ExtResource("8_4ni6u")
 start_thickness = 0.01
 end_thickness = 0.01
@@ -125,6 +108,7 @@ end_thickness = 0.01
 [node name="Interactable" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49209, 0.128964, -3.65996)
 collision_layer = 4
+collision_mask = 4
 script = ExtResource("6_bv6qa")
 
 [node name="BoxCollider" type="CollisionShape3D" parent="Interactable"]
@@ -132,3 +116,6 @@ shape = SubResource("BoxShape3D_81lpw")
 
 [node name="BoxMesh" type="MeshInstance3D" parent="Interactable"]
 mesh = SubResource("BoxMesh_phsec")
+
+[node name="Island" parent="." instance=ExtResource("8_48f8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.6829, 0)

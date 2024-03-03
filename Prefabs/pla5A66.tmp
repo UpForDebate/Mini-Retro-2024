@@ -15,6 +15,7 @@ size = Vector3(0.377882, 1, 0.385172)
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997245, 0)
 script = ExtResource("1_pog1t")
+mouseSens = null
 
 [node name="Player Collider" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_tjwy5")
