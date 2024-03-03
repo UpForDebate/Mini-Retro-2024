@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctpv6s2w2p7nr"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_pog1t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tjwy5"]
+size = Vector3(0.377882, 1, 0.385172)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ickc2"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rs0br"]
+material = SubResource("StandardMaterial3D_ickc2")
+size = Vector3(0.377882, 1, 0.385172)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5803d"]
+
+[sub_resource type="Sky" id="Sky_fhgkd"]
+sky_material = SubResource("PanoramaSkyMaterial_5803d")
+
+[sub_resource type="Environment" id="Environment_367g5"]
+sky = SubResource("Sky_fhgkd")
+ambient_light_color = Color(0.67451, 0.780392, 1, 1)
+ambient_light_energy = 16.0
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997245, 0)
+script = ExtResource("1_pog1t")
+
+[node name="Player Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tjwy5")
+
+[node name="Player Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rs0br")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.309058, 0)
+environment = SubResource("Environment_367g5")
+fov = 60.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 4

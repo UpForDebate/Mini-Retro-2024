@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://kpe71mfs8ksc"]
+
+[ext_resource type="Script" path="res://Scripts/Rope.gd" id="1_w4frk"]
+[ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="2_jmfou"]
+[ext_resource type="PackedScene" uid="uid://b5hpfdpin5ih4" path="res://Prefabs/bobber.tscn" id="3_hsqa7"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_bl4ju"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_px6p8"]
+size = Vector3(0.05, 0.05, 0.4)
+
+[node name="DanglingRope" type="JoltPinJoint3D" node_paths=PackedStringArray("line")]
+node_a = NodePath("../Player/Fish Fetcher")
+node_b = NodePath("RigidBody3D")
+solver_position_iterations = 20
+transform = Transform3D(1, 0, 0, 0, 0.858817, 0.512283, 0, -0.512283, 0.858817, 0.350978, 1.72486, -0.983019)
+visible = false
+script = ExtResource("1_w4frk")
+line = NodePath("LineRenderer3D")
+points = [NodePath("../Player/Fish Fetcher/Fetcher Tip"), NodePath("RigidBody3D/PinJoint3D"), NodePath("RigidBody3D/PinJoint3D/RigidBody3D/PinJoint3D"), NodePath("RigidBody3D/PinJoint3D/RigidBody3D/PinJoint3D/RigidBody3D/PinJoint3D")]
+
+[node name="LineRenderer3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+mesh = SubResource("ImmediateMesh_bl4ju")
+script = ExtResource("2_jmfou")
+start_thickness = 0.01
+end_thickness = 0.01
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.000385046, -0.162445)
+collision_layer = 2
+collision_mask = 2
+axis_lock_angular_y = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_px6p8")
+
+[node name="PinJoint3D" type="JoltPinJoint3D" parent="RigidBody3D"]
+node_a = NodePath("..")
+node_b = NodePath("RigidBody3D")
+solver_position_iterations = 20
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, -2.38419e-07, -0.193786)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="RigidBody3D/PinJoint3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.000385046, -0.162445)
+collision_layer = 2
+collision_mask = 2
+axis_lock_angular_y = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/PinJoint3D/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_px6p8")
+
+[node name="PinJoint3D" type="JoltPinJoint3D" parent="RigidBody3D/PinJoint3D/RigidBody3D"]
+node_a = NodePath("..")
+node_b = NodePath("RigidBody3D")
+solver_position_iterations = 20
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, -2.38419e-07, -0.193786)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="RigidBody3D/PinJoint3D/RigidBody3D/PinJoint3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.000385046, -0.162445)
+collision_layer = 2
+collision_mask = 2
+axis_lock_angular_y = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/PinJoint3D/RigidBody3D/PinJoint3D/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_px6p8")
+
+[node name="PinJoint3D" type="JoltPinJoint3D" parent="RigidBody3D/PinJoint3D/RigidBody3D/PinJoint3D/RigidBody3D"]
+node_a = NodePath("..")
+node_b = NodePath("Bobber")
+solver_position_iterations = 20
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, -2.38419e-07, -0.193786)
+
+[node name="Bobber" parent="RigidBody3D/PinJoint3D/RigidBody3D/PinJoint3D/RigidBody3D/PinJoint3D" instance=ExtResource("3_hsqa7")]

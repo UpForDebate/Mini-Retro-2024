@@ -11,3 +11,5 @@ export_presets.cfg
 .mono/
 data_*/
 .godot/
+.godot/editor/recent_dirs
+.godot/editor/project_metadata.cfg

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cppy3xmwb4b0t"]
+[gd_scene load_steps=13 format=3 uid="uid://cppy3xmwb4b0t"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_hlf0d"]
 [ext_resource type="Material" uid="uid://0sx2u8kc7n47" path="res://placeholder shit/unlit.tres" id="2_2rllf"]
@@ -6,11 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ctpv6s2w2p7nr" path="res://Prefabs/player.tscn" id="3_uscaq"]
 [ext_resource type="PackedScene" uid="uid://drws5behui0ue" path="res://Prefabs/fish_fetcher.tscn" id="4_p4ssq"]
 [ext_resource type="Script" path="res://Scripts/InteractableBuy.gd" id="6_bv6qa"]
-[ext_resource type="Script" path="res://Scripts/Rope.gd" id="7_s4sod"]
-[ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="8_4ni6u"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_7yrlo"]
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0anl"]
 size = Vector3(50, 0.016, 50)
@@ -19,17 +14,8 @@ size = Vector3(50, 0.016, 50)
 material = ExtResource("2_2rllf")
 size = Vector3(50, 0.016, 50)
 
-[sub_resource type="BoxMesh" id="BoxMesh_5n5qi"]
-size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3gq2"]
-shading_mode = 0
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lede8"]
-size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_fug4v"]
+[sub_resource type="LabelSettings" id="LabelSettings_7yrlo"]
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81lpw"]
 
@@ -42,6 +28,21 @@ material = SubResource("StandardMaterial3D_8558y")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_hlf0d")
+
+[node name="DanglingRope" parent="." instance=ExtResource("2_ymrie")]
+visible = true
+
+[node name="Player" parent="." instance=ExtResource("3_uscaq")]
+
+[node name="Fish Fetcher" parent="Player" instance=ExtResource("4_p4ssq")]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_j0anl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_r5kjq")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -79,48 +80,6 @@ text = "PRESS E TO INTERACT
 "
 label_settings = SubResource("LabelSettings_7yrlo")
 horizontal_alignment = 2
-
-[node name="DanglingRope" parent="." instance=ExtResource("2_ymrie")]
-visible = true
-
-[node name="Player" parent="." instance=ExtResource("3_uscaq")]
-
-[node name="Fish Fetcher" parent="Player" instance=ExtResource("4_p4ssq")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-
-[node name="Floor" type="StaticBody3D" parent="."]
-collision_layer = 9
-collision_mask = 9
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("BoxShape3D_j0anl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-mesh = SubResource("BoxMesh_r5kjq")
-
-[node name="Bobber" type="RigidBody3D" parent="." node_paths=PackedStringArray("line")]
-transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.655477, -2.36147)
-collision_layer = 8
-collision_mask = 8
-mass = 3.0
-script = ExtResource("7_s4sod")
-line = NodePath("LineRenderer3D")
-points = [NodePath("."), NodePath("../Player/Fish Fetcher/Fetcher Tip")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bobber"]
-mesh = SubResource("BoxMesh_5n5qi")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_k3gq2")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bobber"]
-shape = SubResource("BoxShape3D_lede8")
-
-[node name="LineRenderer3D" type="MeshInstance3D" parent="Bobber"]
-mesh = SubResource("ImmediateMesh_fug4v")
-script = ExtResource("8_4ni6u")
-start_thickness = 0.01
-end_thickness = 0.01
 
 [node name="Interactable" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49209, 0.128964, -3.65996)
