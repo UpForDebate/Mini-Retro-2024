@@ -97,4 +97,4 @@ func shoot():
 		$"Fish Fetcher/Fetcher/AnimationPlayer".play("Throw")
 		return
 	gameState = state.pulling
-	$"Fish Fetcher/Fetcher/AnimationPlayer".play("Throw", -1, 1.0, true)
+	$"Fish Fetcher/Fetcher/AnimationPlayer".play_backwards("Throw")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://drws5behui0ue"]
+[gd_scene load_steps=9 format=3 uid="uid://drws5behui0ue"]
 
 [ext_resource type="Texture2D" uid="uid://g2u1lwcpf8d5" path="res://model/Fetcher_TX_Fetcher.png" id="1_ypcvk"]
+[ext_resource type="Material" uid="uid://cpqfmqh5u82lh" path="res://model/MT_Fetcher.tres" id="2_ln2ml"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jwr7i"]
 size = Vector3(0.1, 1, 0.1)
@@ -135,7 +136,7 @@ transform = Transform3D(1, 7.355e-09, 2.98023e-08, -1.03275e-08, 1, -2.98023e-08
 shape = SubResource("BoxShape3D_jwr7i")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="."]
-transform = Transform3D(0.876994, 1.4866e-08, 0.480502, 5.96046e-08, 1, -1.19209e-07, -0.480502, 1.78814e-07, 0.876994, 2.98023e-08, 0.418764, 0)
+transform = Transform3D(0.876994, 1.48661e-08, 0.480501, 5.96046e-08, 1, -1.49012e-07, -0.480501, 1.49012e-07, 0.876994, 2.98023e-08, 0.418763, 5.96046e-08)
 bone_name = "Fetcher_Tip"
 bone_idx = 5
 use_external_skeleton = true
@@ -209,6 +210,7 @@ bones/7/scale = Vector3(1, 1, 1)
 [node name="Cylinder" type="MeshInstance3D" parent="Fetcher/Fetcher_Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_7s0y7")
 skin = SubResource("Skin_oruip")
+surface_material_override/0 = ExtResource("2_ln2ml")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fetcher"]
 libraries = {

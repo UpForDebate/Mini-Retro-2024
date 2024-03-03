@@ -1,0 +1,151 @@
+[gd_scene load_steps=20 format=3 uid="uid://naxxh6qg4dq4"]
+
+[ext_resource type="Texture2D" uid="uid://b534k6pkvdirq" path="res://textures/Water 1.jpg" id="1_oq060"]
+[ext_resource type="Script" path="res://Scripts/PathFollow3D.gd" id="2_me34i"]
+[ext_resource type="PackedScene" uid="uid://ddeelih4ir8u4" path="res://Scenes/pixelated_camera.tscn" id="2_ttmsa"]
+[ext_resource type="ArrayMesh" uid="uid://bnq2r3y1bkpbt" path="res://model/land.res" id="2_yoq45"]
+[ext_resource type="Script" path="res://Scripts/look_at.gd" id="3_6y0jc"]
+[ext_resource type="Texture2D" uid="uid://clo7rde8t1550" path="res://textures/Grass Texture 1.jpg" id="3_o318w"]
+[ext_resource type="Script" path="res://Scripts/blinking_text.gd" id="3_ot51m"]
+[ext_resource type="Texture2D" uid="uid://c2uyghvaht51y" path="res://textures/brick_wall.png" id="4_fj0e8"]
+[ext_resource type="FontFile" uid="uid://c0h1jjdov4442" path="res://font/8-bit-hud.ttf" id="5_lhq4t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_87b78"]
+sky_top_color = Color(0.00392157, 0.227451, 0.541176, 1)
+sky_horizon_color = Color(0.623529, 0.659804, 0.715686, 1)
+ground_bottom_color = Color(0.490196, 0.411765, 0.321569, 1)
+ground_horizon_color = Color(0.623529, 0.659804, 0.715686, 1)
+
+[sub_resource type="Sky" id="Sky_fs5dc"]
+sky_material = SubResource("ProceduralSkyMaterial_87b78")
+
+[sub_resource type="Environment" id="Environment_bklia"]
+background_mode = 2
+sky = SubResource("Sky_fs5dc")
+tonemap_mode = 2
+fog_enabled = true
+fog_density = 0.001
+volumetric_fog_density = 0.0875
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqoxf"]
+shading_mode = 0
+albedo_texture = ExtResource("1_oq060")
+uv1_triplanar = true
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_le41r"]
+shading_mode = 0
+albedo_texture = ExtResource("3_o318w")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdgg0"]
+shading_mode = 2
+diffuse_mode = 1
+specular_mode = 2
+albedo_color = Color(0.937255, 0.509804, 0.384314, 1)
+albedo_texture = ExtResource("4_fj0e8")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glnc6"]
+shading_mode = 2
+albedo_color = Color(0.937255, 0.509804, 0.384314, 1)
+albedo_texture = ExtResource("4_fj0e8")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+texture_filter = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_sywni"]
+font = ExtResource("5_lhq4t")
+font_size = 50
+font_color = Color(0.796078, 0.760784, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3tj3r"]
+font = ExtResource("5_lhq4t")
+font_size = 32
+font_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_aj1wn"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -50, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, -50, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main Menu" type="Node3D"]
+
+[node name="Island" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57032, -0.24824, 2.01247)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Island"]
+transform = Transform3D(-0.920505, 0.0651617, -0.385259, 0, 0.985996, 0.166769, 0.390731, 0.153511, -0.907614, 0.302282, -0.944012, 0.0485797)
+light_color = Color(1, 1, 0.74902, 1)
+shadow_enabled = true
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Island"]
+environment = SubResource("Environment_bklia")
+
+[node name="Ocean" type="CSGBox3D" parent="Island"]
+use_collision = true
+collision_layer = 9
+collision_mask = 9
+size = Vector3(1000, 0.1, 1000)
+material = SubResource("StandardMaterial3D_mqoxf")
+
+[node name="Land" type="CSGMesh3D" parent="Island/Ocean"]
+use_collision = true
+mesh = ExtResource("2_yoq45")
+material = SubResource("StandardMaterial3D_le41r")
+
+[node name="HoleBorder" type="CSGCylinder3D" parent="Island/Ocean/Land"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95452, -2.73351, 4.54946)
+radius = 9.616
+height = 16.191
+material = SubResource("StandardMaterial3D_qdgg0")
+
+[node name="ActualHole" type="CSGCylinder3D" parent="Island/Ocean/Land"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95452, -2.73351, 4.54946)
+operation = 2
+radius = 9.145
+height = 17.417
+material = SubResource("StandardMaterial3D_glnc6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 67.0
+offset_right = 1077.0
+offset_bottom = 313.0
+text = "Fischer's Fishing Fishers Fishing Phishing Fish"
+label_settings = SubResource("LabelSettings_sywni")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 313.0
+offset_right = 1077.0
+offset_bottom = 559.0
+text = "Press F to play"
+label_settings = SubResource("LabelSettings_3tj3r")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("3_ot51m")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.493382, 17.2489, -1.74233)
+curve = SubResource("Curve3D_aj1wn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -50, 0, 0)
+script = ExtResource("2_me34i")
+
+[node name="Pixelated Camera" parent="Path3D/PathFollow3D" node_paths=PackedStringArray("target") instance=ExtResource("2_ttmsa")]
+script = ExtResource("3_6y0jc")
+target = NodePath("../../../LookAt")
+
+[node name="LookAt" type="Node3D" parent="."]
