@@ -94,7 +94,7 @@ func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		var mouseMovement = event.relative * mouseSens/100
 		rotation.y -= mouseMovement.x
-		mouseMovement.y = clamp(mainCamera.global_rotation.x + mouseMovement.y, deg_to_rad(-70), deg_to_rad(80)) - mainCamera.global_rotation.x;
+		mouseMovement.y = clamp(mainCamera.global_rotation.x - mouseMovement.y, deg_to_rad(-70), deg_to_rad(80)) - mainCamera.global_rotation.x;
 		cameraDirection.rotate_x(mouseMovement.y)
 
 func shoot():
